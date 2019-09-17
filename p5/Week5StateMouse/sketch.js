@@ -31,9 +31,14 @@ function draw() {
 }
 
 function mouseReleased() {
-  myState ++
+  myState++
 
   if (myState > 2) {
     myState = 0;
   }
+
+//OR
+
+//myState = (myState + 1) % 3 ;
+
 }
