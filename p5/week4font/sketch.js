@@ -1,4 +1,5 @@
 var estonia;
+var x = 0;
 
 function setup() {
   // put setup code here
@@ -10,9 +11,13 @@ estonia = loadFont("assets/Estonia.ttf")
 function draw() {
   // put drawing code here
 background (100);
-textFont(estonia, 150);
+textFont(estonia, 50);
 
-fill (255, 0 ,0);
-text ("hello world!", 20, 150);
+fill (255, 255, 255);
+text ("hello world!", x, 150);
+x = x + 1;
+if (x > width) {
+  x = 0;
+}
 
 }
