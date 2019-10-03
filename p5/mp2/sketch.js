@@ -69,7 +69,7 @@ function draw() {
       break;
 
     case 7:
-      text("This track deals with longing for someone you love to come back after death.", 10, 100);
+      text("This track deals with longing for someone you love to come back.", 10, 100);
       break;
 
     case 8:
