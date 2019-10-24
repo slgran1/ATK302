@@ -6,6 +6,8 @@ var posty, postyLeft, postyRight;
 var cup;
 var splash_post;
 var font;
+var losspic, winpic;
+var grass;
 
 function setup() {
 
@@ -16,11 +18,14 @@ function setup() {
     cars.push(new Car());
   }
 
-  postyLeft = loadImage("assets/posty_left.png");
-  postyRight = loadImage("assets/posty_right.png");
+  postyLeft = loadImage("assets/stewie_left.png");
+  postyRight = loadImage("assets/stewie_right.png");
   posty = postyLeft;
-  cup = loadImage("assets/cup.png");
-  splash_post = loadImage("assets/splash_post.png");
+  cup = loadImage("assets/quaffle.png");
+  splash_post = loadImage("assets/splash_quid.jpg");
+  losspic = loadImage("assets/loss.jpg");
+  winpic = loadImage("assets/win.png");
+  grass = loadImage("assets/grass.jpg");
 
   font = loadFont("assets/imperfecta.ttf");
 
@@ -28,6 +33,7 @@ function setup() {
   rectMode(CENTER);
   ellipseMode(CENTER);
   imageMode(CENTER);
+  textAlign(CENTER);
 }
 
 function draw() {
@@ -35,39 +41,48 @@ function draw() {
   switch (myState) {
 
     case 0: // splash screen
-      background(206, 195, 14);
+      background(0, 182, 18);
       image(splash_post, height/2, width/2, 800, 480);
       fill(255);
       textSize(35);
       textFont(font);
-      strokeWeight(25);
+      strokeWeight(5);
       stroke(25);
-      text("Post Malone is needs to get ready for his show tonight!", 25, 100);
-      text("Help him gather all of the essentials to prepare him", 25, 700);
-      text("for the big night.", 300, 760);
+      text("Welcome to Quidditch Cup 13 in Charlseton, West Virginia!", width/2, 100);
+      text("Collect all the quaffles to win the national title!", width/2, 740);
       break;
 
     case 1: // the game state
       game();
       timer++;
-      if (timer > 1200) {
+      if (timer > 900) {
         myState = 3;
         timer = 0;
       }
       break;
 
     case 2: // the win state
-      background(39, 174, 96);
-      fill('white');
-      textSize(25);
-      text("Wow. You're so cool. I'm very proud.", 100, 100);
+    background(46, 190, 217);
+    image(winpic, height/2, width/2, 800, 480);
+    fill(255);
+    textSize(35);
+    textFont(font);
+    strokeWeight(5);
+    stroke(25);
+    text("Congratulations! You're the USQ National Champions!!", width/2, 100);
+    text("Click to defend your title!", width/2, 740);
       break;
 
     case 3: // the lose state
-      background(203, 67, 53);
-      fill('white');
-      textSize(25);
-      text("HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA", 100, 100);
+    background(120, 112, 102);
+    image(losspic, height/2, width/2, 800, 480);
+    fill(255);
+    textSize(35);
+    textFont(font);
+    strokeWeight(5);
+    stroke(25);
+    text("You have lost in heartbreaking fashion. How sad.", width/2, 100);
+    text("Click to compete for the title again!", width/2, 740);
       break;
 
   }
@@ -147,7 +162,7 @@ function checkForKeys() {
 function resetTheGame() {
   cars = [];
   // spawn cars!!!
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 20; i++) {
     cars.push(new Car());
   }
   timer = 0;
@@ -157,6 +172,7 @@ function resetTheGame() {
 
 function game() {
   background(100);
+  image(grass, 0, 0, 3200, 3200);
   for (var i = 0; i < cars.length; i++) {
     cars[i].display();
     cars[i].drive();
@@ -173,6 +189,6 @@ function game() {
   // draw the frog
   fill('green');
   //ellipse(frogPos.x, frogPos.y, 60, 60);
-  image(posty, frogPos.x, frogPos.y, 150, 140);
+  image(posty, frogPos.x, frogPos.y, 110, 150);
   checkForKeys();
 }
