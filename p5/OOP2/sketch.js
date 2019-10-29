@@ -4,7 +4,7 @@ var frogPos;
 function setup() {
 
   createCanvas(800, 800);
-  for (var i = 0; i < 999; i++) {
+  for (var i = 0; i < 90; i++) {
     cars.push(new Car());
   }
   frogPos = createVector(width / 2, height - 80);

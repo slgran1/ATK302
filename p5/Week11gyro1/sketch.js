@@ -8,10 +8,18 @@ var yPosition = 0;
 var x = 0; // acceleration data
 var y = 0;
 var z = 0;
+var cars = [];
+var frogPos;
 
 function setup() {
 
   createCanvas(windowWidth, windowHeight);
+
+  for (var i = 0; i < 90; i++) {
+    cars.push(new Car());
+  }
+  frogPos = createVector(width / 2, height - 80);
+
 
   // initialize accelerometer variables
   alpha = 0;
@@ -43,6 +51,17 @@ function draw() {
   image(bunnyImage, 0, 0, 500, 500);
   //  	rect(0, 0, 100, 100) ;
   pop();
+
+frogPos.x = xPosition;
+frogPos.y = yPosition;
+
+  for (var i = 0; i < cars.length; i++) {
+    cars[i].display();
+    cars[i].drive();
+    if (cars[i].pos.dist(frogPos) < 50) {
+      cars.splice(i, 1);
+    }
+  }
 
 
   // DECORATIONS
@@ -88,3 +107,32 @@ window.addEventListener('devicemotion', function(e) {
   y = e.acceleration.y;
   z = e.acceleration.z;
 });
+
+
+// car class!!
+function Car() {
+  // attributes
+  this.pos = createVector(100, 100);
+  this.vel = createVector(random(-5, 5), random(-5, 5));
+
+  this.r = random(255);
+  this.g = random(255);
+  this.b = random(255);
+
+  //methods
+  this.display = function() {
+    fill(this.r, this.g, this.b);
+    rect(this.pos.x, this.pos.y, 50, 50);
+  }
+
+  this.drive = function() {
+    this.pos.add(this.vel);
+
+    if (this.pos.x > width) this.pos.x = 0;
+    if (this.pos.x < 0) this.pos.x = width;
+    if (this.pos.y > width) this.pos.y = 0;
+    if (this.pos.y < 0) this.pos.y = height;
+
+  }
+
+}
