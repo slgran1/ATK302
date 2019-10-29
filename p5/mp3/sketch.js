@@ -42,14 +42,14 @@ function draw() {
 
     case 0: // splash screen
       background(0, 182, 18);
-      image(splash_post, height/2, width/2, 800, 480);
+      image(splash_post, height / 2, width / 2, 800, 480);
       fill(255);
       textSize(35);
       textFont(font);
       strokeWeight(5);
       stroke(25);
-      text("Welcome to Quidditch Cup 13 in Charlseton, West Virginia!", width/2, 100);
-      text("Collect all the quaffles to win the national title!", width/2, 740);
+      text("Welcome to Quidditch Cup 13 in Charlseton, West Virginia!", width / 2, 100);
+      text("Collect all the quaffles to win the national title!", width / 2, 740);
       break;
 
     case 1: // the game state
@@ -62,27 +62,27 @@ function draw() {
       break;
 
     case 2: // the win state
-    background(46, 190, 217);
-    image(winpic, height/2, width/2, 800, 480);
-    fill(255);
-    textSize(35);
-    textFont(font);
-    strokeWeight(5);
-    stroke(25);
-    text("Congratulations! You're the USQ National Champions!!", width/2, 100);
-    text("Click to defend your title!", width/2, 740);
+      background(46, 190, 217);
+      image(winpic, height / 2, width / 2, 800, 480);
+      fill(255);
+      textSize(35);
+      textFont(font);
+      strokeWeight(5);
+      stroke(25);
+      text("Congratulations! You're the USQ National Champions!!", width / 2, 100);
+      text("Click to defend your title!", width / 2, 740);
       break;
 
     case 3: // the lose state
-    background(120, 112, 102);
-    image(losspic, height/2, width/2, 800, 480);
-    fill(255);
-    textSize(35);
-    textFont(font);
-    strokeWeight(5);
-    stroke(25);
-    text("You have lost in heartbreaking fashion. How sad.", width/2, 100);
-    text("Click to compete for the title again!", width/2, 740);
+      background(120, 112, 102);
+      image(losspic, height / 2, width / 2, 800, 480);
+      fill(255);
+      textSize(35);
+      textFont(font);
+      strokeWeight(5);
+      stroke(25);
+      text("You have lost in heartbreaking fashion. How sad.", width / 2, 100);
+      text("Click to compete for the title again!", width / 2, 740);
       break;
 
   }
